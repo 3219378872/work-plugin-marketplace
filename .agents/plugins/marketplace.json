@@ -8,7 +8,9 @@
       "name": "zero-powers",
       "source": {
         "source": "git-subdir",
-        "repo": "3219378872/zero-powers"
+        "url": "https://github.com/3219378872/zero-powers.git",
+        "path": "./",
+        "ref": "main"
       },
       "policy": {
         "installation": "AVAILABLE",
