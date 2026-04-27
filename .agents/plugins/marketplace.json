@@ -7,7 +7,7 @@
     {
       "name": "zero-powers",
       "source": {
-        "source": "github",
+        "source": "git-subdir",
         "repo": "3219378872/zero-powers"
       },
       "policy": {
