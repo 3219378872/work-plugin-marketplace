@@ -7,9 +7,9 @@
     {
       "name": "zero-powers",
       "source": {
-        "source": "git-subdir",
+        "source": "url",
         "url": "https://github.com/3219378872/zero-powers.git",
-        "path": "./",
+        "path": "./...",
         "ref": "main"
       },
       "policy": {
