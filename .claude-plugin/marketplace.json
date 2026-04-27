@@ -1,16 +1,19 @@
 {
   "name": "work-plugin-marketplace",
   "owner": {
-    "name": "bt",
-    "email": "bt@example.com"
+    "name": "风起",
+    "email": "3219378872@qq.com"
   },
   "metadata": {
-    "description": "Shared Claude Code and Codex marketplace for work plugins."
+    "description": "GitHub-hosted marketplace and reference index for work plugins and scripts."
   },
   "plugins": [
     {
       "name": "zero-powers",
-      "source": "./plugins/zero-powers"
+      "source": {
+        "source": "github",
+        "repo": "3219378872/zero-powers"
+      }
     }
   ]
 }

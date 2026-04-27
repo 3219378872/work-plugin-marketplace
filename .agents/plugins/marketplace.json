@@ -7,8 +7,8 @@
     {
       "name": "zero-powers",
       "source": {
-        "source": "local",
-        "path": "./plugins/zero-powers"
+        "source": "github",
+        "repo": "3219378872/zero-powers"
       },
       "policy": {
         "installation": "AVAILABLE",
