@@ -1,0 +1,16 @@
+{
+  "name": "work-plugin-marketplace",
+  "owner": {
+    "name": "bt",
+    "email": "bt@example.com"
+  },
+  "metadata": {
+    "description": "Shared Claude Code and Codex marketplace for work plugins."
+  },
+  "plugins": [
+    {
+      "name": "zero-powers",
+      "source": "./plugins/zero-powers"
+    }
+  ]
+}
