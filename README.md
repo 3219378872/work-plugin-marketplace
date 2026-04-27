@@ -1,47 +1,87 @@
 # work-plugin-marketplace
 
-Shared local marketplace for Claude Code and Codex work plugins.
+GitHub-hosted marketplace and reference index for work plugins and scripts.
 
-## Contents
+Maintainer: 风起 <3219378872@qq.com>
 
-- `zero-powers` from `https://github.com/3219378872/zero-powers`
-- Source snapshot: local `origin/main` at `fd608247bdf66b46867bef36a3e212d0ebe27e24`
-- Plugin path: `plugins/zero-powers`
+## Purpose
+
+This repository is the top-level entry point for work plugin and script references. It stores
+marketplace manifests and documentation, not plugin source snapshots.
+
+Plugin source code stays in its own GitHub repository and is resolved by the marketplace at install
+or update time.
+
+## Plugins
+
+| Plugin | Source | Purpose |
+| --- | --- | --- |
+| `zero-powers` | `https://github.com/3219378872/zero-powers` | go-zero microservice development skills, patterns, and review workflows |
 
 ## Claude Code
 
-Register this marketplace:
+Register this marketplace from GitHub:
 
 ```bash
-claude plugin marketplace add /home/bt/projects/skill/work-plugin-marketplace
+claude plugin marketplace add 3219378872/work-plugin-marketplace
 ```
 
-Install the plugin:
+List configured marketplaces:
+
+```bash
+claude plugin marketplace list
+```
+
+Install `zero-powers` from this marketplace:
 
 ```bash
 claude plugin install zero-powers@work-plugin-marketplace
 ```
 
-Claude reads `.claude-plugin/marketplace.json` and installs `zero-powers` from `./plugins/zero-powers`.
+Update the marketplace and installed plugin when the source repository changes:
+
+```bash
+claude plugin marketplace update work-plugin-marketplace
+claude plugin update zero-powers
+```
 
 ## Codex
 
-Register this marketplace:
+Register this marketplace from GitHub:
 
 ```bash
-codex plugin marketplace add /home/bt/projects/skill/work-plugin-marketplace
+codex plugin marketplace add 3219378872/work-plugin-marketplace
 ```
 
-Codex reads `.agents/plugins/marketplace.json` and discovers `zero-powers` from `./plugins/zero-powers`.
+Refresh this marketplace when plugin source repositories change:
+
+```bash
+codex plugin marketplace upgrade work-plugin-marketplace
+```
+
+Codex reads `.agents/plugins/marketplace.json` and resolves `zero-powers` from
+`3219378872/zero-powers`.
 
 ## Maintenance
 
-Refresh the vendored plugin snapshot from the local source clone:
+Add new work plugins by editing both marketplace manifests:
 
-```bash
-git -C /home/bt/projects/skill/zero-powers fetch origin
-git -C /home/bt/projects/skill/zero-powers archive --format=tar --output=/tmp/zero-powers-origin-main.tar origin/main
-tar -xf /tmp/zero-powers-origin-main.tar -C plugins/zero-powers
+- `.claude-plugin/marketplace.json`
+- `.agents/plugins/marketplace.json`
+
+Use GitHub source references for plugin entries:
+
+```json
+{
+  "source": {
+    "source": "github",
+    "repo": "OWNER/REPO"
+  }
+}
 ```
 
-After refreshing, keep `plugins/zero-powers/.codex-plugin/plugin.json` and root marketplace files in place.
+Do not vendor plugin source directories into this repository. Keep plugin implementation,
+release tags, and plugin-specific metadata in the plugin source repository.
+
+If a plugin must be pinned for reproducibility, add the explicit version or ref for that plugin and
+document the reason in this README.
