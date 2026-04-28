@@ -9,7 +9,6 @@
       "source": {
         "source": "url",
         "url": "https://github.com/3219378872/zero-powers.git",
-        "path": "./...",
         "ref": "main"
       },
       "policy": {
